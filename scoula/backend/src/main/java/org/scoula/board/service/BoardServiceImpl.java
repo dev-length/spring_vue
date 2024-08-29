@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 
-    private final static String BASE_DIR = "c:/upload/a";
+    private final static String BASE_DIR = "c:/upload/board";
     final private BoardMapper mapper;
 
     @Override
@@ -48,14 +48,12 @@ public class BoardServiceImpl implements BoardService {
         log.info("create......" + board);
         BoardVO vo = board.toVo();
 
-        System.out.println(vo+"@@@@@@@@@@@");
-
         mapper.create(vo);
 
         // 파일 업로드 처리
         List<MultipartFile> files = board.getFiles();
         if(files != null && !files.isEmpty()) { // 첨부 파일이 있는 경우
-            System.out.println(vo.getNo()+"!!!!!!!!!!!!!!!!!!!");
+            System.out.println(vo.getNo());
             upload(vo.getNo(), files);
         }
         return get(vo.getNo());

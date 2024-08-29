@@ -41,6 +41,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   const getToken = () => state.value.token;
 
+  const changeProfile = (member) => {
+    state.value.user.email = member.email;
+    localStorage.setItem('auth', JSON.stringify(state.value));
+  };
+
   const load = () => {
     const auth = localStorage.getItem('auth');
     if (auth != null) {
@@ -51,5 +56,14 @@ export const useAuthStore = defineStore('auth', () => {
 
   load();
 
-  return { state, username, email, isLogin, login, logout, getToken };
+  return {
+    state,
+    username,
+    email,
+    isLogin,
+    changeProfile,
+    login,
+    logout,
+    getToken,
+  };
 });

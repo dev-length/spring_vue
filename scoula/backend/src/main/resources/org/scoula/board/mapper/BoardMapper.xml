@@ -43,13 +43,11 @@
         <result column="filename" property="filename"/>
         <result column="path" property="path"/>
         <result column="contentType" property="contentType"/>
-        <result column="size"
-                property="size"/>
+        <result column="size" property="size"/>
         <result column="a_reg_date"  property="regDate"/>
     </resultMap>
     <resultMap id="boardMap" type="org.scoula.board.domain.BoardVO">
-        <id column="no"
-            property="no"/>
+        <id column="no" property="no"/>
         <result column="title" property="title"/>
         <result column="content" property="content"/>
         <result column="writer" property="writer"/>
